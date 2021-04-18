@@ -1,27 +1,29 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { css } from "styled-components/macro";
 
-const drawerOpen = keyframes`
-  0% { width: 0px },
-  25% { width: 125px },
-  50% { width: 250px },
-  75% { width: 375px },
-  100% { width: 500px },
-`;
+const body = document.querySelector("body");
+const viewPortLessScroll = window.innerWidth - body.clientWidth;
+console.log("viewPor", viewPortLessScroll);
 
 export const DrawerContainer = styled.div`
   height: 100vh;
-  background-color: darkgray;
+  width: 500px;
   position: absolute;
+  left: 100vw;
   top: 0;
   right: 0;
-  animation-name: drawerOpen;
-  animation-duration: 2s;
+  background-color: blue;
+  transition-duration: 500ms;
+  ${({ isDrawerOpen }) =>
+    isDrawerOpen &&
+    css`
+      left: calc(100vw - ${500 + viewPortLessScroll}px);
+    `}
 `;
 
 export const DrawerHeader = styled.div`
   height: 50px;
   width: 100%;
-  border: .5px solid gray;
+  border-bottom: 0.5px solid gray;
   display: flex;
   justify-content: flex-end;
 `;

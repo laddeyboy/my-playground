@@ -1,16 +1,21 @@
-import { DrawerContainer, DrawerHeader, CloseDrawer, CloseIcon } from './styles';
+import {
+  DrawerContainer,
+  DrawerContent,
+  DrawerHeader,
+  CloseDrawer,
+  CloseIcon,
+} from "./styles";
 
-const Drawer = ({closeDrawer}) => {
-  const test = true;
+const Drawer = ({ closeDrawer, isDrawerOpen }) => {
   return (
-    <DrawerContainer>
+    <DrawerContainer isDrawerOpen={isDrawerOpen}>
       <DrawerHeader>
         <CloseDrawer>
           <CloseIcon onClick={closeDrawer}>+</CloseIcon>
         </CloseDrawer>
       </DrawerHeader>
     </DrawerContainer>
-  )
+  );
 };
 
 export default Drawer;
